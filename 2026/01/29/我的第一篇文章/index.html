@@ -17,7 +17,7 @@
 <!--<![endif]-->
 
 <head>
-  <title>我的第一篇文章 | 大K的主页</title>
+  <title>我的第一篇博客 | 大K的主页</title>
   <!-- Meta data -->
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -123,7 +123,6 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -185,7 +184,7 @@
     
     
 </span>
-                <h1>我的第一篇文章</h1>
+                <h1>我的第一篇博客</h1>
             </div>
         </div>
         <div class="col-md-8 col-md-offset-2">
@@ -200,6 +199,10 @@
             <hr class="nogutter">
         </div>
         <nav class="m-pagination col-md-8 col-md-offset-2 col-sm-24" role="pagination">
+    
+    <a class="pull-left" href="/2026/01/29/%E6%89%BE%E5%88%B0%E5%A4%A7K/" style="float: left;">
+        ← 🔗大K
+    </a>
     
     
     <a class="pull-right" href="/2026/01/29/hello-world/">
@@ -335,6 +338,72 @@ $('#intro').find('img').each(function(){
 })(jQuery);
 </script>
 
+
+<!-- Subscribe Modal Script -->
+<script type="text/javascript">
+$(document).ready(function() {
+    // Open modal when clicking subscribe buttons
+    $('.hero-button, .footer-button').on('click', function(e) {
+        e.preventDefault();
+        $('#subscribe').addClass('active');
+        $('body').css('overflow', 'hidden');
+    });
+
+    // Close modal when clicking X button
+    $('.modal-close').on('click', function() {
+        $('#subscribe').removeClass('active');
+        $('body').css('overflow', '');
+    });
+
+    // Close modal when clicking overlay
+    $('.modal-overlay').on('click', function() {
+        $('#subscribe').removeClass('active');
+        $('body').css('overflow', '');
+    });
+
+    // Close modal on ESC key
+    $(document).on('keydown', function(e) {
+        if (e.keyCode === 27) {
+            $('#subscribe').removeClass('active');
+            $('body').css('overflow', '');
+        }
+    });
+
+    // Handle form submission
+    $('.subscribe-form').on('submit', function(e) {
+        e.preventDefault();
+        var email = $(this).find('.email-input').val();
+        if (email) {
+            alert('Thank you for subscribing! We will send you 2 free letters a week.');
+            $('#subscribe').removeClass('active');
+            $('body').css('overflow', '');
+            $('.email-input').val('');
+        }
+    });
+
+    // Copy to clipboard function
+    window.copyToClipboard = function(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            alert('已复制: ' + text);
+        }).catch(function(err) {
+            // Fallback for older browsers
+            var textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                alert('已复制: ' + text);
+            } catch (err) {
+                alert('复制失败，请手动复制');
+            }
+            document.body.removeChild(textArea);
+        });
+    };
+});
+</script>
 
 
       

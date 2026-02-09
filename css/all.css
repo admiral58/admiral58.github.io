@@ -67,26 +67,25 @@
 	}
 }
 body {
-	background-color: #FFFFFF;
-	background-color: rgb(255,255,255);
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
-	color: #666;
+	background-color: #000000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans CN', 'WenQuanYi Micro Hei', sans-serif;
+	color: #ffffff;
 	font-style: normal;
 	font-weight: 400;
-	font-size: 14px;
-	line-height: 30px;
+	font-size: 16px;
+	line-height: 1.7;
 	padding: 0px 0px;
 }
 p {
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
-	color: #666;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans CN', 'WenQuanYi Micro Hei', sans-serif;
+	color: #e0e0e0;
 	font-style: normal;
 	font-weight: 400;
-	font-size: 14px;
-	line-height: 30px;
+	font-size: 16px;
+	line-height: 1.7;
 }
 i {
-	color: #151515;
+	color: #ffffff;
 }
 b, strong {
 	font-style: normal;
@@ -99,18 +98,465 @@ h4,
 h5,
 h6 {
 	margin-top: 0;
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
-	font-weight: 400;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans CN', 'WenQuanYi Micro Hei', sans-serif;
+	font-weight: 700;
 	font-weight: normal;
-	color: #151515;
+	color: #ffffff;
+	line-height: 1.2;
 }
 h2 {
-	text-transform: uppercase;
 	font-style: normal;
-	font-weight: 400;
-	font-size: 22px;
-	line-height: 30px;
-	letter-spacing: 1px;
+	font-weight: 700;
+	font-size: 56px;
+	letter-spacing: -1px;
+	margin-bottom: 24px;
+}
+/* 英文翻译样式 */
+.english-translation {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: #9b59b6;
+    margin-top: 16px;
+}
+
+/* ==================== Dan Koe Style ==================== */
+
+/* Hero Section */
+.dankoe-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+    padding: 80px 20px;
+}
+
+.hero-content {
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.hero-left {
+    flex-shrink: 0;
+}
+
+.hero-avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #9b59b6;
+}
+
+.hero-right {
+    flex: 1;
+    text-align: left;
+}
+
+.hero-name {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 24px;
+    color: #ffffff;
+    white-space: nowrap;
+}
+
+.hero-slogan {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: clamp(20px, 4vw, 28px);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.slogan-english {
+    display: block;
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: clamp(14px, 2vw, 18px);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: #888888;
+    margin-top: 8px;
+}
+
+.hero-subtitle {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 32px;
+    color: #888888;
+}
+
+.hero-button {
+    display: inline-block;
+    background-color: #9b59b6;
+    color: #000000;
+    padding: 16px 32px;
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 0;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-button:hover {
+    background-color: #8e44ad;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.hero-contact {
+    margin: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+}
+
+.contact-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-english {
+    font-size: 12px;
+    color: #888888;
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-weight: 400;
+}
+
+.contact-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.copy-button {
+    padding: 6px 12px;
+    background-color: #9b59b6;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    flex-shrink: 0;
+}
+
+.copy-button:hover {
+    background-color: #8e44ad;
+}
+
+.copy-button:active {
+    background-color: #7d3c98;
+}
+
+/* Resources Section */
+.dankoe-resources {
+    background-color: #000000;
+    padding: 100px 20px;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.resource-card {
+    background-color: #111111;
+    border: 1px solid #222222;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 200px;
+    transition: border-color 0.2s ease;
+}
+
+.resource-card:hover {
+    border-color: #9b59b6;
+}
+
+.resource-card h3 {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.resource-card p {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #a0a0a0;
+    margin-bottom: 24px;
+}
+
+.resource-button {
+    display: inline-block;
+    background-color: #9b59b6;
+    color: #000000;
+    padding: 12px 24px;
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    text-align: center;
+    align-self: flex-start;
+    transition: background-color 0.2s ease;
+}
+
+.resource-button:hover {
+    background-color: #8e44ad;
+    text-decoration: none;
+}
+
+/* Blog Section */
+.dankoe-blog {
+    background-color: #000000;
+    padding: 100px 20px;
+}
+
+.blog-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.blog-item {
+    border-bottom: 1px solid #222222;
+    padding: 40px 0;
+}
+
+.blog-item:last-child {
+    border-bottom: none;
+}
+
+.blog-title {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+}
+
+.blog-title a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.blog-title a:hover {
+    color: #9b59b6;
+    text-decoration: none;
+}
+
+.blog-excerpt {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #a0a0a0;
+    margin-bottom: 12px;
+}
+
+.blog-meta {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 14px;
+    color: #666666;
+}
+
+.blog-author {
+    margin-right: 8px;
+}
+
+/* About Section */
+.dankoe-about {
+    background-color: #000000;
+    padding: 100px 20px;
+}
+
+.about-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.dankoe-about h2 {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.about-subtitle {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: #888888;
+    margin-bottom: 40px;
+}
+
+.about-text p {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: #a0a0a0;
+    margin-bottom: 16px;
+}
+
+.about-slogan {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #ffffff;
+    margin: 40px 0 16px 0;
+}
+
+.about-description {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #888888;
+    margin-bottom: 32px;
+}
+
+.social-links {
+    display: flex;
+    gap: 32px;
+}
+
+.social-link {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #888888;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.social-link:hover {
+    color: #9b59b6;
+    text-decoration: none;
+}
+
+/* Footer */
+.dankoe-footer {
+    background-color: #000000;
+    padding: 100px 20px;
+    text-align: center;
+    border-top: 1px solid #222222;
+}
+
+.footer-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.dankoe-footer h3 {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.footer-subtitle {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #888888;
+    margin-bottom: 32px;
+}
+
+.footer-button {
+    display: inline-block;
+    background-color: #9b59b6;
+    color: #000000;
+    padding: 16px 32px;
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.footer-button:hover {
+    background-color: #8e44ad;
+    text-decoration: none;
+}
+
+.copyright {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 14px;
+    color: #666666;
+    margin-top: 32px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .hero-right {
+        text-align: center;
+    }
+    
+    .hero-avatar {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .hero-name {
+        font-size: 42px;
+    }
+    
+    .hero-slogan {
+        font-size: 20px;
+    }
+    
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dankoe-about h2 {
+        font-size: 36px;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        gap: 16px;
+    }
 }
 @media (max-width:768px) {
 	h2 {
@@ -122,17 +568,16 @@ h2 {
 }
 h3 {
 	font-style: normal;
-	font-weight: 400;
-	line-height: 37px;
-	font-size: 20px;
+	font-weight: 700;
+	font-size: 24px;
 	margin-top: 0;
+	margin-bottom: 16px;
 }
 h4 {
 	font-style: normal;
-	font-weight: 400;
-	font-size: 18px;
-	line-height: 30px;
-	color: #333333;
+	font-weight: 600;
+	font-size: 22px;
+	color: #ffffff;
 }
 h1 span,
 h2 span,
@@ -154,9 +599,9 @@ h1 span {
 	top: -2px
 }
 section {
-	background-color: #fff;
+	background-color: #000000;
 	position: relative;
-	padding-top: 60px;
+	padding: 100px 0;
 	z-index: 4;
 }
 a,
@@ -165,8 +610,13 @@ a:active,
 a:focus,
 a:visited,
 a:link {
-	color: #151515;
+	color: #ffffff;
 	text-decoration: none;
+	transition: color 0.2s ease;
+}
+a:hover {
+	color: #9b59b6;
+	text-decoration: underline;
 }
 [class*="col-"] {
 	padding-top: 15px;
@@ -318,35 +768,46 @@ hr.title-accent {
 /********************************************************/
 
 a.custom-button {
-	background-color: #151515;
-	color: #fff;
-	padding: 8px 18px;
+	background-color: #9b59b6;
+	color: #000000;
+	padding: 16px 32px;
 	font-weight: 600;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	-webkit-border-radius: 0.5rem;
+	-moz-border-radius: 0.5rem;
+	border-radius: 0.5rem;
 	display: inline-block;
-	line-height: 30px;
+	line-height: 1.5;
+	font-size: 14px;
+	letter-spacing: 0.5px;
+	text-transform: uppercase;
+	transition: all 0.2s ease;
+}
+a.custom-button:hover {
+	background-color: #eab308;
+	text-decoration: none;
 }
 a.custom-button span {
 	margin-left: 10px;
 }
 
 .btn {
-	color: white;
-	-webkit-border-radius: 0;
-	-moz-border-radius: 0;
-	border-radius: 0;
+	color: #000000;
+	-webkit-border-radius: 0.5rem;
+	-moz-border-radius: 0.5rem;
+	border-radius: 0.5rem;
 	font-size: 14px;
-    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
-	font-weight: 700;
-	padding: 8px 18px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans CN', 'WenQuanYi Micro Hei', sans-serif;
 	font-weight: 600;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
+	padding: 16px 32px;
 	text-transform: uppercase;
 	border: none;
+	background-color: #9b59b6;
+	letter-spacing: 0.5px;
+	transition: all 0.2s ease;
+}
+.btn:hover {
+	background-color: #eab308;
+	color: #000000;
 }
 .btn-lg {
   padding: 25px
@@ -388,10 +849,12 @@ a.custom-button span {
   color: #fff;
 }
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active {
-  background-color: #ccd1d9;
+  background-color: #eab308;
+	color: #000000;
 }
 .btn-default, .btn-default.disabled, .btn-default[disabled] {
-  background-color: #151515
+  background-color: #9b59b6;
+	color: #000000;
 }
 .open .dropdown-toggle.btn-default {
   background-color: #ccd1d9;
@@ -521,30 +984,35 @@ a.custom-button span {
 }
 .navbar .nav > li > a {
 	display: block;
-	padding:0px 10px;
-	margin:23px 0px;
-	color: #151515;
-	font-family: 'Montserrat', "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
-	text-transform: uppercase;
-	letter-spacing: 1px;
-	font-size: 11px;
+	padding: 0px 20px;
+	margin: 24px 0px;
+	color: #ffffff;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans CN', 'WenQuanYi Micro Hei', sans-serif;
+	text-transform: none;
+	letter-spacing: 0;
+	font-size: 14px;
 	font-weight: 400;
-	line-height: 14px;
+	line-height: 20px;
 	text-shadow: none;
-	border-right:1px solid #aaa;
+	border-right: none;
+	transition: color 0.2s ease;
+}
+.navbar .nav > li > a:hover {
+	color: #9b59b6;
+	background-color: transparent;
 }
 .navbar .nav li.nolink {
-	font-family: 'Montserrat', "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
-	color: #151515;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans CN', 'WenQuanYi Micro Hei', sans-serif;
+	color: #ffffff;
 	font-weight: 400;
 	text-shadow: none;
-	letter-spacing: 1px;
-	line-height: 14px;
-	text-transform: uppercase;
-	font-size: 11px;
-	margin:23px 0px;
-	border-right:1px solid #aaa;
-	padding: 0px 10px;
+	letter-spacing: 0;
+	line-height: 20px;
+	text-transform: none;
+	font-size: 14px;
+	margin: 24px 0px;
+	border-right: none;
+	padding: 0px 20px;
 }
 nav i.icon-basic-eye {
 	font-size: 20px;
@@ -556,7 +1024,7 @@ nav i.icon-basic-eye {
 	margin-right: 5px;
 }
 .navbar-inner {
-	background-color: transparent;
+	background-color: #000000;
 	-webkit-transition: background-color 400ms linear;
 	-moz-transition: background-color 400ms linear;
 	-o-transition: background-color 400ms linear;
@@ -564,11 +1032,11 @@ nav i.icon-basic-eye {
 	transition: background-color 400ms linear;
 	z-index:10;
 	border:none;
-	border-bottom: none;
+	border-bottom: 1px solid #222222;
 }
 #blog-post .navbar-inner {
-	background-color: #fff;
-	background-color: rgba(255,255,255,.9);
+	background-color: #000000;
+	background-color: rgba(0,0,0,.95);
 }
 .lightnav .navbar-inner.lightnav-alt .nav > li > a,
 .lightnav .navbar-inner.lightnav-alt .learnmore {
@@ -590,12 +1058,14 @@ nav i.icon-basic-eye {
 /* Continue Navigation... */
 .navbar .nav > li:last-child > a,
 .navbar .nav > li:last-child {
-	border-right:none;
+	border-right: none;
+	padding-right: 0;
 }
 .navbar .nav > li > a:focus,
 .navbar .nav > li > a:hover,
 .navbar .nav > li > a:active {
-	color:#777;
+	color: #9b59b6;
+	background-color: transparent;
 }
 @media only screen and (max-width: 1024px) {
 
@@ -845,26 +1315,39 @@ span.sb-caret { /* Caret Down */
 * Full-height hero section, (homepage, above the fold,)
 ******************************************************* */
 #hero {
-	height: 100%;
-	position: fixed;
+	height: 100vh;
+	min-height: 700px;
+	position: relative;
 	width: 100%;
 	padding-top: 0;
+	display: flex;
+	align-items: center;
+	background-color: #000000;
 }
 #hero h2 {
-	color: #151515;
-	margin-bottom: 20px;
+	color: #ffffff;
+	margin-bottom: 32px;
 	display: inline-block;
-	padding: 14px;
+	font-size: clamp(2.5rem, 5vw, 4.5rem);
+	font-weight: 700;
+	line-height: 1.1;
+	padding: 0;
+	max-width: 1000px;
 }
 #hero p {
-	color: #333;
-	font-family: 'Georgia', serif, Helvetica, "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
-	font-size: 18px;
+	color: #a0a0a0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans CN', 'WenQuanYi Micro Hei', sans-serif;
+	font-size: 20px;
 	display: inline-block;
+	max-width: 800px;
+	margin: 0 auto 40px;
 }
 @media (max-width:1024px) {
 	#hero {
 		position: relative;
+		height: auto;
+		min-height: 600px;
+		padding: 100px 0;
 	}
 	#hero .element-img {
 		background-attachment: scroll !important
@@ -872,10 +1355,16 @@ span.sb-caret { /* Caret Down */
 	.heightblock {
 		display: none
 	}
+	#hero h2 {
+		font-size: 40px;
+	}
 }
 @media (max-width:767px) {
+	#hero h2 {
+		font-size: 32px;
+	}
 	#hero p {
-		display: none
+		font-size: 18px;
 	}
 }
 /********************************************************/
@@ -1529,22 +2018,20 @@ hr.byline-accent {
 * Statement section, (homepage)
 ******************************************************* */
 #statement {
-	background-color: #fff;
-	padding: 60px 0 20px;
+	background-color: #000000;
+	padding: 100px 0;
+	border-top: 1px solid #222222;
 }
 
 #statement p {
-	font-family: 'Georgia', serif, Helvetica, "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
-	font-style: italic;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Hiragino Sans GB', 'Microsoft YaHei', 'Source Han Sans CN', 'WenQuanYi Micro Hei', sans-serif;
+	font-style: normal;
 	font-size: 20px;
-	color: #333;
-}
-
-#statement i {
-	font-size: 40px;
-	position: relative;
-	top: 11px;
-	margin-right: 10px;
+	color: #e0e0e0;
+	line-height: 1.6;
+	max-width: 800px;
+	margin: 0 auto;
+	font-weight: 400;
 }
 
 /* *******************************************************
@@ -3084,10 +3571,11 @@ button.send{
 * Global footer, (all pages)
 ******************************************************* */
 footer {
-	padding:5% 0 0;
-	background:#151515;
+	padding:80px 0 0;
+	background:#000000;
 	z-index: 9;
 	position: relative;
+	border-top: 1px solid #222222;
 }
 footer p.m_14 {
 	color:#767D84;
@@ -3274,19 +3762,55 @@ footer .footer_bottom {
 }
 
 /*add css*/
+
+/* Dan Koe Style - Article List */
+.opening-statement {
+	padding: 48px;
+	background-color: #111111;
+	border: 1px solid #222222;
+	border-radius: 0.5rem;
+	margin-bottom: 32px;
+	transition: all 0.3s ease;
+}
+.opening-statement:hover {
+	border-color: #9b59b6;
+}
+.opening-statement h3 {
+	margin-bottom: 12px;
+}
+.opening-statement h3 a {
+	color: #ffffff;
+	font-weight: 700;
+	font-size: 28px;
+	transition: color 0.2s ease;
+}
+.opening-statement h3 a:hover {
+	color: #9b59b6;
+}
+.opening-statement span {
+	color: #888888;
+	font-size: 14px;
+	margin-bottom: 20px;
+	display: block;
+}
+.opening-statement p {
+	color: #d0d0d0;
+	font-size: 16px;
+	line-height: 1.7;
+	margin-bottom: 24px;
+}
 .readMore a {
-	font-size: 12px;
-	color: gray!important;
-	padding-top: 2px;
-	padding-bottom: 2px;
-	padding-left: 10px;
-	padding-right: 10px;
-	border: 1px solid gray;
-	border-radius: 20px;
+	font-size: 14px;
+	color: #9b59b6;
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	text-decoration: underline;
+	font-weight: 600;
 }
 .readMore a:hover {
-	background-color: gray;
-	color: #fff!important;
+	background-color: transparent;
+	color: #ffffff;
 }
 .m-pagination a{
 	color: gray;
@@ -3341,6 +3865,159 @@ footer .footer_bottom {
 
 nav.pagination {
 	display: block;
+	padding: 80px 0;
+	text-align: center;
+}
+nav.pagination a {
+	color: #ffffff;
+	padding: 16px 32px;
+	border: 2px solid #333333;
+	margin: 0 12px;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	transition: all 0.3s ease;
+}
+nav.pagination a:hover {
+	background-color: #9b59b6;
+	border-color: #9b59b6;
+	color: #000000;
+	text-decoration: none;
+}
+
+/* ==================== Subscribe Modal ==================== */
+
+.subscribe-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.subscribe-modal.active {
+    display: flex;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #111111;
+    border: 1px solid #222222;
+    padding: 48px;
+    max-width: 500px;
+    width: 90%;
+    z-index: 10000;
+}
+
+.modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 32px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease;
+}
+
+.modal-close:hover {
+    color: #9b59b6;
+}
+
+.modal-title {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.modal-subtitle {
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #a0a0a0;
+    margin-bottom: 32px;
+}
+
+.subscribe-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.email-input {
+    width: 100%;
+    padding: 16px;
+    background-color: #000000;
+    border: 1px solid #333333;
+    color: #ffffff;
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.email-input:focus {
+    border-color: #9b59b6;
+}
+
+.email-input::placeholder {
+    color: #666666;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 16px;
+    background-color: #9b59b6;
+    color: #000000;
+    border: none;
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-button:hover {
+    background-color: #8e44ad;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 32px;
+    }
+    
+    .modal-title {
+        font-size: 24px;
+    }
 }
 @charset "utf-8";
 /* CSS Document */

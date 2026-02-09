@@ -123,7 +123,6 @@
                     <!-- Nav logo -->
                     <div class="logo">
                         <a href="/" title="Logo" class="animsition-link">
-                         <img src="/img/logo.png" alt="Logo" width="35px;"/> 
                         </a>
                     </div>
                     <!-- // Nav logo -->
@@ -212,7 +211,16 @@
                         
                         <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
                             
-                              <h4 class="title"><a href="/2026/01/29/我的第一篇文章/">我的第一篇文章</a></h4>
+                              <h4 class="title"><a href="/2026/01/29/找到大K/">🔗大K</a></h4>
+                            
+                            <p><time datetime="2026-01-29T12:14:53.392Z"><a href="/2026/01/29/找到大K/">2026-01-29</a></time></p>
+                        </div>
+                    
+                        
+                        
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3 wow fadeInUp" data-wow-delay="0.3s">
+                            
+                              <h4 class="title"><a href="/2026/01/29/我的第一篇文章/">我的第一篇博客</a></h4>
                             
                             <p><time datetime="2026-01-29T12:14:53.000Z"><a href="/2026/01/29/我的第一篇文章/">2026-01-29</a></time></p>
                         </div>
@@ -312,6 +320,72 @@ $('#intro').find('img').each(function(){
 })(jQuery);
 </script>
 
+
+<!-- Subscribe Modal Script -->
+<script type="text/javascript">
+$(document).ready(function() {
+    // Open modal when clicking subscribe buttons
+    $('.hero-button, .footer-button').on('click', function(e) {
+        e.preventDefault();
+        $('#subscribe').addClass('active');
+        $('body').css('overflow', 'hidden');
+    });
+
+    // Close modal when clicking X button
+    $('.modal-close').on('click', function() {
+        $('#subscribe').removeClass('active');
+        $('body').css('overflow', '');
+    });
+
+    // Close modal when clicking overlay
+    $('.modal-overlay').on('click', function() {
+        $('#subscribe').removeClass('active');
+        $('body').css('overflow', '');
+    });
+
+    // Close modal on ESC key
+    $(document).on('keydown', function(e) {
+        if (e.keyCode === 27) {
+            $('#subscribe').removeClass('active');
+            $('body').css('overflow', '');
+        }
+    });
+
+    // Handle form submission
+    $('.subscribe-form').on('submit', function(e) {
+        e.preventDefault();
+        var email = $(this).find('.email-input').val();
+        if (email) {
+            alert('Thank you for subscribing! We will send you 2 free letters a week.');
+            $('#subscribe').removeClass('active');
+            $('body').css('overflow', '');
+            $('.email-input').val('');
+        }
+    });
+
+    // Copy to clipboard function
+    window.copyToClipboard = function(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            alert('已复制: ' + text);
+        }).catch(function(err) {
+            // Fallback for older browsers
+            var textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                alert('已复制: ' + text);
+            } catch (err) {
+                alert('复制失败，请手动复制');
+            }
+            document.body.removeChild(textArea);
+        });
+    };
+});
+</script>
 
 
       
