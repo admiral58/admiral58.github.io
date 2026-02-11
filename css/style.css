@@ -4436,6 +4436,37 @@ nav.pagination a:hover {
     margin: 0 auto;
 }
 
+.back-links {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.back-link {
+    display: inline-block;
+    background-color: #9b59b6;
+    color: #000000;
+    padding: 10px 24px;
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 0;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.back-link:hover {
+    background-color: #8e44ad;
+    transform: translateY(-2px);
+    text-decoration: none;
+}
+
+.back-link-english {
+    display: block;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
 .back-home {
     display: inline-block;
     background-color: #9b59b6;
