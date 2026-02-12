@@ -120,6 +120,18 @@ h2 {
     position: relative;
 }
 
+/* Page Navigation Bar (for page 2+) */
+.page-nav-bar {
+    background-color: #000000;
+    padding: 20px;
+    border-bottom: 1px solid #222222;
+}
+
+.page-nav-bar .container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 .scroll-indicator {
     position: absolute;
     bottom: 8vh;

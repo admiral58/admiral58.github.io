@@ -56,12 +56,18 @@
 
       <!-- ============================ Hero Section =========================== -->
 
+<section class="page-nav-bar">
+    <div class="container">
+        <a href="/" class="back-link">← 回到主页<span class="back-link-english">Back to Home</span></a>
+    </div>
+</section>
+
 
 <!-- ============================ Blog Section =========================== -->
 
 <section id="intro" class="dankoe-blog">
     <div class="container">
-        <div class="blog-list">
+        <div class="blog-list" id="blogList">
             
             <article class="blog-item">
                 <h3 class="blog-title"><a href="/2026/02/03/任何人都可以在2小时建属于自己的个人网站/">任何人都可以在2小时建属于自己的个人网站</a></h3>
@@ -111,11 +117,9 @@ Canva可画​
         </div>
         
         <div class="pagination">
-            
-            <a href="/#intro" class="pagination-link pagination-prev">← 上一页</a>
-            
-            <span class="pagination-info">第 2 / 2 页</span>
-            
+            <button id="prevBtn" class="pagination-link pagination-prev" onclick="changePage(-1)">← 上一页</button>
+            <span id="pageInfo" class="pagination-info">第 2 / 2 页</span>
+            <button id="nextBtn" class="pagination-link pagination-next" onclick="changePage(1)">下一页 →</button>
         </div>
         
         <div class="view-all-posts">
@@ -125,6 +129,125 @@ Canva可画​
         </div>
     </div>
 </section>
+
+<script>
+const allPosts = [
+
+    {
+        title: "你所谓的“松弛感”，只是系统未上线的死机状态",
+        path: "2026/02/09/你所谓的“松弛感”，只是系统未上线的死机状态/",
+        excerpt: "世人将“松弛”奉为境界，实则是系统未加载时的蓝屏。真正顶级的系统从不松弛——它们在静默中完成万亿次运算，只在你需要答案的瞬间给出结果。你看到的“从容”，是精密杀戮后的余温；你羡慕的“淡定”，是算法碾压后的真空。弱者表演松弛，强者隐藏张力。当你的内核仍用意志力驱动时，任何“放松”都是溃散的借口。真正的系统，连呼吸都带着精确的压强，它从不追求松弛，只追求在归零前一秒的绝对统治力。别骗自己了。你先要有一台值得全速运转的引擎，才配谈论",
+        date: "February 09, 2026"
+    },
+
+    {
+        title: "你的“松弛感”，藏在最深层的确定性里",
+        path: "2026/02/09/你的“松弛感”，藏在最深层的确定性里/",
+        excerpt: "你认为的松弛感，是躺在沙滩上的懒散。真正的松弛感，是F1赛车进站时的速度和精准——极度紧绷的系统，在外部看来却是行云流水的平静。普通人的“紧”，是资源匮乏下的肌肉僵硬。高手的“松”，是系统冗余后的从容选择。他们的优秀从不来自“更努力”的咬牙切齿，而是来自核心算法如此顺滑，以至于有充足的算力来保持优雅。你会看见顶尖创作者的举重若轻，看见卓越投资者面对波动的无视。这不是性格，这是证据——证明他们的决策系统已通过极端压力测试，进入自动驾驶",
+        date: "February 09, 2026"
+    },
+
+    {
+        title: "你的“元习惯”，是改写命运的作弊码",
+        path: "2026/02/08/你的“元习惯”，是改写命运的作弊码/",
+        excerpt: "你看到的习惯只是浮冰。普通人在冰面上不断雕刻，追求更美的形状。而高手潜入深海，调整那座冰山本身的重心与结构——他们锤炼的是“元习惯”：那个能生成、审视并摧毁其他习惯的终极程序。“元习惯”与习惯的本质区别，是造物主与造物的区别。它是你每周留白的“系统重构日”，是你面对痛苦时的“第一性原理追问”，是你主动引入的“认知冲突”。当别人在用意志力对抗拖延时，拥有“元习惯”的你，已完成了对“完美主义”认知模型的重构。旧习惯因失去根基而崩塌，新",
+        date: "February 08, 2026"
+    },
+
+    {
+        title: "你的每个习惯，都在出卖你的底层信仰",
+        path: "2026/02/08/你的每个习惯，都在出卖你的底层信仰/",
+        excerpt: "每一个重复的动作，都是你向潜意识派出的探针。它在无声地收集数据，验证你内心那个真正的、关于世界如何运作的“认知模型”。你拖延，不是因为你懒，而是你的底层模型深信“完美大于一切”。你回避冲突，不是因为你弱，而是你的模型判定“和谐等于安全”。每一次习惯性的痛苦，都是探针发回的警报：“你当前的模型，与真实世界存在冲突。”绝大多数人试图拔掉警报器（强迫改变习惯），而高手在分析传回的数据（审视模型）。他们不急于改变行为，而是追问：是这个世界",
+        date: "February 08, 2026"
+    },
+
+    {
+        title: "在无人问津时，完成对世界的“掠夺”",
+        path: "2026/02/08/在无人问津时，完成对世界的“掠夺”/",
+        excerpt: "“无反馈期”是宇宙给你的最好礼物。它是市场、社交和算法的静默，却是你与本质独处的唯一时段。此时，所有动作的终点，应从“寻求外部认可”切换为“完成内部闭环”。你不是在表演，而是在调试一个尚未面世的引擎。每一次执行，不是在期待掌声，而是在收集一个数据点：这个动作，是否让系统更顺滑、更强大？高手用作品与世界对话，但首先，他们用执行密度与自己的系统对话。外界的寂静，恰恰是你放大内部信号的时刻。把“被看见”的需求，转化为“可运行”的代码。",
+        date: "February 08, 2026"
+    },
+
+    {
+        title: "如何“偷走”他人的运气？",
+        path: "2026/02/08/如何“偷走”他人的运气？/",
+        excerpt: "成功的错觉源于视角的错位。你看他人成就，归功于风口、运气、赛道。看自己成绩，归功于努力、认知、实力。这是大脑最高效的谎言——用外部归因消解焦虑，用内部归因喂养自尊。两套标准，一套用于保护自尊，一套用于简化世界。真正的力量始于一个翻转：将他人的“运气”拆解为可复制的系统，将自己的“能力”置于环境与趋势中审视。这是清醒的开始。",
+        date: "February 08, 2026"
+    },
+
+    {
+        title: "任何人都可以在2小时建属于自己的个人网站",
+        path: "2026/02/03/任何人都可以在2小时建属于自己的个人网站/",
+        excerpt: "Feb 3, 2026  |   Ken你认为建一个专业个人网站必须懂代码、烧钱、耗几个月？真相是，2小时，0成本，你就能拥有一个比80%同行更专业的线上名片。个人网站是您的专属数字名片，能立体展示技能与作品，有效提升专业信誉，更是您完全掌控的互联网永久资产，不受社交平台算法的限制。实现的关键在于利用免费静态网站托管服务。（整个过程无需服务器或域名费用，0成本）具体做法是：只需注册账号，创建特定名称的仓库，上传一个简单的首页文件",
+        date: "February 03, 2026"
+    },
+
+    {
+        title: "我的常用AI工具推荐（国内访问快且免费，尤其适合各位Solo创业的朋友，）",
+        path: "2026/02/03/我的常用AI工具推荐（国内访问快且免费，尤其适合各位Solo创业的朋友，）/",
+        excerpt: "Feb 3, 2026  |   Ken我选择这些AI工具是因为它们「国内访问快」「免费」，分享它们是因为我觉得特别适合一人公司模式创业的主理人朋友（包括自由职业者，职场副业人士）日常使用，0成本。截止目前（2026,2月），我经常使用到的是：工具名称核心推荐点Canva可画​一款提供海量模板和AI设计功能的视觉传播平台，让零基础用户也能快速制作专业级设计作品。扣子​字节跳动出品的AI应用开发平台，让你无需",
+        date: "February 03, 2026"
+    }
+
+];
+const postsPerPage = 6;
+let blogPageNum = 2;
+const totalBlogPages = Math.ceil(allPosts.length / postsPerPage);
+
+function changePage(direction) {
+    const newPage = blogPageNum + direction;
+    if (newPage < 1 || newPage > totalBlogPages) return;
+
+    blogPageNum = newPage;
+    const startIndex = (blogPageNum - 1) * postsPerPage;
+    const endIndex = startIndex + postsPerPage;
+    const postsToShow = allPosts.slice(startIndex, endIndex);
+
+    const blogList = document.getElementById('blogList');
+    blogList.innerHTML = '';
+
+    postsToShow.forEach(post => {
+        const article = document.createElement('article');
+        article.className = 'blog-item';
+        article.innerHTML = `
+            <h3 class="blog-title"><a href="${post.path}">${post.title}</a></h3>
+            <p class="blog-excerpt">${post.excerpt}</p>
+            <div class="blog-meta">
+                <span class="blog-author">Kepler Wang / 王元不</span>
+                <span class="blog-date">${post.date}</span>
+            </div>
+        `;
+        blogList.appendChild(article);
+    });
+
+    // Update pagination buttons
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const pageInfo = document.getElementById('pageInfo');
+
+    if (prevBtn) prevBtn.disabled = blogPageNum <= 1;
+    if (nextBtn) nextBtn.disabled = blogPageNum >= totalBlogPages;
+    if (pageInfo) pageInfo.textContent = `第 ${blogPageNum} / ${totalBlogPages} 页`;
+
+    // Update view all posts link
+    const viewAllLink = document.querySelector('.view-all-link');
+    if (viewAllLink) {
+        if (blogPageNum === 1) {
+            viewAllLink.href = '/all-posts';
+            viewAllLink.innerHTML = '查看所有文章<span class="link-english">View All Posts</span>';
+        } else {
+            viewAllLink.href = '/';
+            viewAllLink.innerHTML = '回到主页<span class="link-english">Back to Home</span>';
+        }
+    }
+
+    // Scroll to the blog section top
+    const blogSection = document.querySelector('.dankoe-blog');
+    if (blogSection) {
+        blogSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+</script>
 
 <!-- ============================ Resources Section =========================== -->
 
