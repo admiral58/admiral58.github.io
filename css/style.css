@@ -262,6 +262,57 @@ h2 {
     text-decoration: none;
 }
 
+.pomodoro-hero-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    background-size: 200% 200%;
+    color: #fff;
+    padding: 8px 16px;
+    font-family: 'Inter', 'DM Sans', 'Helvetica Neue', 'Arial', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 15px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    animation: gradientShift 3s ease infinite, floatButton 3s ease-in-out infinite;
+    margin-top: 8px;
+}
+
+.pomodoro-hero-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 6px 25px rgba(102, 126, 234, 0.6);
+    text-decoration: none;
+}
+
+.pomodoro-button-english {
+    display: block;
+    font-size: 10px;
+    margin-top: 1px;
+    opacity: 0.9;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes floatButton {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
 .hero-contact {
     margin: 24px 0;
     display: flex;

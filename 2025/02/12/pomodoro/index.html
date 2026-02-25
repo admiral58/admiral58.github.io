@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<!--[if lte IE 8 ]>
+<html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<!--
+***************  *      *     *
+      8          *    *       *
+      8          *  *         *
+      8          **           *
+      8          *  *         *
+      8          *    *       *
+      8          *      *     *
+      8          *        *   ***********  Theme By Kieran(http://go.kieran.top)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <title>番茄时钟 | 大K的主页</title>
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  <meta name="baidu-site-verification" content="X4I5eT0WQW" />
+
+  <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+
+  <!-- 百度统计 -->
+  <script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?2acb71c2f77ee6b8efc0eadaa071a4c3";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+  </script>
+
+<meta name="generator" content="Hexo 7.3.0"></head>
+<!--
+<body class="post-template">
+-->
+<body id="index" class="lightnav animsition">
+
+      <!-- ============================ #sb-site Main Page Wrapper =========================== -->
+
+    <div id="sb-site">
+        <!-- #sb-site - All page content should be contained within this id, except the off-canvas navigation itself -->
+
+
+      
+<!-- ============================ Pomodoro Timer Page =========================== -->
+
+<!-- Alert Bar -->
+<div id="alertBar" class="alert-bar hidden">
+    <div class="alert-content">
+        <span class="alert-icon">🎉</span>
+        <span class="alert-message" id="alertMessage">恭喜！完成了一个番茄时钟！</span>
+        <button class="alert-close" onclick="hideAlert()">✕</button>
+    </div>
+</div>
+
+<section class="pomodoro-page">
+    <div class="pomodoro-container">
+        <h1 class="pomodoro-title">番茄时钟<span class="title-english">Pomodoro Timer</span></h1>
+
+        <!-- Timer Display -->
+        <div class="timer-display">
+            <div class="time-circle" id="timeCircle">
+                <span class="time-text" id="timeText">25:00</span>
+                <div class="time-label" id="timeLabel">专注时间</div>
+            </div>
+        </div>
+
+        <!-- Mode Buttons -->
+        <div class="mode-buttons">
+            <button class="mode-btn active" onclick="setMode('work')">专注</button>
+            <button class="mode-btn" onclick="setMode('shortBreak')">短休息</button>
+            <button class="mode-btn" onclick="setMode('longBreak')">长休息</button>
+        </div>
+
+        <!-- Control Buttons -->
+        <div class="control-buttons">
+            <button class="control-btn start-btn" id="startBtn" onclick="toggleTimer()">
+                <span class="btn-text">开始</span>
+            </button>
+            <button class="control-btn reset-btn" onclick="resetTimer()">
+                <span class="btn-text">重置</span>
+            </button>
+        </div>
+
+        <!-- Pomodoro Count -->
+        <div class="pomodoro-count">
+            <div class="count-number" id="pomodoroCount">0</div>
+            <div class="count-label">完成的番茄</div>
+            <div class="tomato-container" id="tomatoContainer">
+            </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="settings-panel">
+            <h3 class="settings-title">时间设置</h3>
+            <div class="setting-item">
+                <label>专注时间（分钟）</label>
+                <input type="number" id="workTime" value="25" min="1" max="60" onchange="updateSettings()">
+            </div>
+            <div class="setting-item">
+                <label>短休息（分钟）</label>
+                <input type="number" id="shortBreakTime" value="5" min="1" max="30" onchange="updateSettings()">
+            </div>
+            <div class="setting-item">
+                <label>长休息（分钟）</label>
+                <input type="number" id="longBreakTime" value="15" min="1" max="60" onchange="updateSettings()">
+            </div>
+        </div>
+
+        <!-- Sound Toggle -->
+        <div class="sound-toggle">
+            <label class="switch">
+                <input type="checkbox" id="soundToggle" checked>
+                <span class="slider"></span>
+            </label>
+            <span class="sound-label">提醒音效</span>
+        </div>
+
+        <!-- Back Button -->
+        <div class="back-button">
+            <a href="/" class="back-link">← 返回主页</a>
+        </div>
+    </div>
+</section>
+
+<style>
+/* ============================ Pomodoro Timer Styles (主页风格) ============================ */
+
+/* Alert Bar */
+.alert-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    animation: slideDown 0.3s ease-out;
+}
+
+.alert-bar.hidden {
+    display: none;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.alert-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 40px;
+}
+
+.alert-icon {
+    font-size: 32px;
+    margin-right: 15px;
+}
+
+.alert-message {
+    flex: 1;
+    font-size: 20px;
+    font-weight: 600;
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
+}
+
+.alert-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.alert-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* ============================ Pomodoro Timer Page Styles (主页风格) ============================ */
+
+.pomodoro-page {
+    min-height: 100vh;
+    padding: 80px 20px;
+}
+
+.pomodoro-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 60px 40px;
+}
+
+.pomodoro-title {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 60px;
+    color: #151515;
+    font-weight: 400;
+}
+
+.title-english {
+    display: block;
+    font-size: 16px;
+    margin-top: 10px;
+    color: #888;
+}
+
+/* Timer Display */
+.timer-display {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.time-circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #151515;
+}
+
+.time-text {
+    font-size: 80px;
+    font-weight: 700;
+    color: #151515;
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
+}
+
+.time-label {
+    font-size: 18px;
+    color: #888;
+    margin-top: 10px;
+}
+
+/* Mode Buttons */
+.mode-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.mode-btn {
+    padding: 16px 32px;
+    font-size: 18px;
+    border: 2px solid #151515;
+    background: transparent;
+    color: #151515;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
+}
+
+.mode-btn:hover {
+    background: #151515;
+    color: #fff;
+}
+
+.mode-btn.active {
+    background: #151515;
+    color: #fff;
+}
+
+/* Control Buttons */
+.control-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.control-btn {
+    padding: 18px 60px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
+}
+
+.start-btn {
+    background: #9b59b6;
+    color: #000;
+}
+
+.start-btn:hover {
+    background: #8e44ad;
+}
+
+.start-btn.running {
+    background: #e74c3c;
+}
+
+.reset-btn {
+    background: #151515;
+    color: #fff;
+}
+
+.reset-btn:hover {
+    background: #333;
+}
+
+.btn-text {
+    font-size: 20px;
+}
+
+/* Pomodoro Count */
+.pomodoro-count {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.count-number {
+    font-size: 80px;
+    font-weight: 700;
+    color: #151515;
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
+}
+
+.count-label {
+    font-size: 18px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.tomato-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tomato {
+    font-size: 32px;
+}
+
+/* Settings Panel */
+.settings-panel {
+    background: #f5f5f5;
+    padding: 30px;
+    margin-bottom: 30px;
+}
+
+.settings-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #151515;
+    text-align: center;
+}
+
+.setting-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.setting-item:last-child {
+    margin-bottom: 0;
+}
+
+.setting-item label {
+    font-size: 18px;
+    color: #151515;
+    font-weight: 500;
+}
+
+.setting-item input[type="number"] {
+    width: 100px;
+    padding: 10px 15px;
+    font-size: 18px;
+    border: 2px solid #151515;
+    background: #fff;
+    color: #151515;
+    font-weight: 600;
+    text-align: center;
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
+}
+
+.setting-item input[type="number"]:focus {
+    outline: none;
+    background: #f5f5f5;
+}
+
+/* Sound Toggle */
+.sound-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #151515;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.sound-label {
+    font-size: 18px;
+    color: #151515;
+    font-weight: 500;
+}
+
+/* Back Button */
+.back-button {
+    text-align: center;
+}
+
+.back-link {
+    display: inline-block;
+    padding: 16px 40px;
+    background: #151515;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
+    transition: background 0.2s ease;
+}
+
+.back-link:hover {
+    background: #333;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pomodoro-title {
+        font-size: 36px;
+    }
+
+    .time-circle {
+        width: 250px;
+        height: 250px;
+    }
+
+    .time-text {
+        font-size: 60px;
+    }
+
+    .mode-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .mode-btn {
+        width: 100%;
+    }
+
+    .control-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .control-btn {
+        width: 100%;
+    }
+
+    .count-number {
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .pomodoro-container {
+        padding: 40px 20px;
+    }
+
+    .time-circle {
+        width: 200px;
+        height: 200px;
+    }
+
+    .time-text {
+        font-size: 50px;
+    }
+
+    .setting-item {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .setting-item input[type="number"] {
+        width: 100%;
+    }
+}
+</style>
+
+<script>
+// 番茄时钟配置
+let timer = null;
+let isRunning = false;
+let remainingSeconds = 25 * 60; // 剩余秒数
+let pomodoroCount = 0;
+let currentMode = 'work';
+
+// 时间设置（分钟）
+let workTime = 25;
+let shortBreakTime = 5;
+let longBreakTime = 15;
+
+// 模式配置
+const modes = {
+    work: {
+        label: '专注时间'
+    },
+    shortBreak: {
+        label: '短休息'
+    },
+    longBreak: {
+        label: '长休息'
+    }
+};
+
+// 更新时间显示
+function updateTimeDisplay() {
+    const minutes = Math.floor(remainingSeconds / 60);
+    const seconds = remainingSeconds % 60;
+    const timeText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    document.getElementById('timeText').textContent = timeText;
+    document.title = `${timeText} - ${modes[currentMode].label}`;
+}
+
+// 更新模式
+function setMode(mode) {
+    currentMode = mode;
+    resetTimer();
+
+    document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+
+    document.getElementById('timeLabel').textContent = modes[mode].label;
+}
+
+// 播放提示音
+function playAlertSound() {
+    const soundToggle = document.getElementById('soundToggle');
+    if (!soundToggle.checked) return;
+
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+
+    oscillator.type = 'sine';
+    oscillator.frequency.setValueAtTime(880, audioContext.currentTime);
+    oscillator.frequency.setValueAtTime(660, audioContext.currentTime + 0.1);
+    oscillator.frequency.setValueAtTime(880, audioContext.currentTime + 0.2);
+
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.5);
+}
+
+// 切换计时器
+function toggleTimer() {
+    const startBtn = document.getElementById('startBtn');
+    const btnText = startBtn.querySelector('.btn-text');
+
+    if (isRunning) {
+        // 暂停
+        clearInterval(timer);
+        isRunning = false;
+        btnText.textContent = '开始';
+        startBtn.classList.remove('running');
+    } else {
+        // 开始
+        timer = setInterval(() => {
+            remainingSeconds--;
+            updateTimeDisplay();
+
+            if (remainingSeconds <= 0) {
+                clearInterval(timer);
+                isRunning = false;
+
+                playAlertSound();
+
+                if (currentMode === 'work') {
+                    pomodoroCount++;
+                    document.getElementById('pomodoroCount').textContent = pomodoroCount;
+                    addTomato();
+                    showAlert('🎉 恭喜！完成了一个番茄时钟！');
+                } else {
+                    showAlert('☕ 休息时间结束，开始专注吧！');
+                }
+
+                btnText.textContent = '开始';
+                startBtn.classList.remove('running');
+                resetTimer();
+            }
+        }, 1000);
+
+        isRunning = true;
+        btnText.textContent = '暂停';
+        startBtn.classList.add('running');
+    }
+}
+
+// 重置计时器
+function resetTimer() {
+    clearInterval(timer);
+    isRunning = false;
+
+    const startBtn = document.getElementById('startBtn');
+    const btnText = startBtn.querySelector('.btn-text');
+
+    btnText.textContent = '开始';
+    startBtn.classList.remove('running');
+
+    // 重置时间
+    switch (currentMode) {
+        case 'work':
+            remainingSeconds = workTime * 60;
+            break;
+        case 'shortBreak':
+            remainingSeconds = shortBreakTime * 60;
+            break;
+        case 'longBreak':
+            remainingSeconds = longBreakTime * 60;
+            break;
+    }
+
+    updateTimeDisplay();
+}
+
+function addTomato() {
+    const container = document.getElementById('tomatoContainer');
+    const tomato = document.createElement('span');
+    tomato.className = 'tomato';
+    tomato.textContent = '🍅';
+    container.appendChild(tomato);
+}
+
+function updateSettings() {
+    workTime = parseInt(document.getElementById('workTime').value) || 25;
+    shortBreakTime = parseInt(document.getElementById('shortBreakTime').value) || 5;
+    longBreakTime = parseInt(document.getElementById('longBreakTime').value) || 15;
+
+    if (!isRunning) {
+        resetTimer();
+    }
+}
+
+// 页面可见性变化时更新显示
+document.addEventListener('visibilitychange', () => {
+    if (isRunning && !document.hidden) {
+        // 页面重新可见时，立即更新显示
+        updateTimeDisplay();
+    }
+});
+
+// 显示提示条
+function showAlert(message) {
+    const alertBar = document.getElementById('alertBar');
+    const alertMessage = document.getElementById('alertMessage');
+    alertMessage.textContent = message;
+    alertBar.classList.remove('hidden');
+
+    // 5秒后自动关闭
+    setTimeout(hideAlert, 5000);
+}
+
+// 隐藏提示条
+function hideAlert() {
+    const alertBar = document.getElementById('alertBar');
+    alertBar.classList.add('hidden');
+}
+
+updateTimeDisplay();
+</script>
+
+      <footer class="site-footer">
+  <div class="inner">
+    <section class="copyright">
+      All content copyright <a href="/">Ken</a> &copy; 2026 &bull; All rights reserved.
+    </section>
+    <section class="poweredby">
+      Proudly published with <a class="icon-hexo" href="https://hexo.io" target="_blank">Hexo</a>
+    </section>
+  </div>
+</footer>
+
+      <!-- Load our scripts -->
+<!-- Resizable 'on-demand' full-height hero -->
+<script type="text/javascript">
+    var resizeHero = function () {
+        var hero = $(".cover,.heightblock"),
+            window1 = $(window);
+        hero.css({
+            "height": window1.height()
+        });
+    };
+
+    resizeHero();
+
+    $(window).resize(function () {
+        resizeHero();
+    });
+</script>
+<script src="/js/plugins.min.js"></script><!-- Bootstrap core and concatenated plugins always load here -->
+<script src="/js/scripts.js"></script><!-- Theme scripts -->
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$('#intro').find('img').each(function(){
+  var alt = this.alt;
+
+  if (alt){
+    $(this).after('<span class="caption" style="display:none">' + alt + '</span>');
+  }
+
+  $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox" rel="gallery" />');
+});
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+<!-- WeChat Modal Script -->
+<script type="text/javascript">
+$(document).ready(function() {
+    // Open modal when clicking subscribe buttons
+    $('.hero-button, .footer-button').on('click', function(e) {
+        e.preventDefault();
+        $('#wechat').addClass('active');
+        $('body').css('overflow', 'hidden');
+    });
+
+    // Close modal when clicking X button
+    $('.modal-close').on('click', function() {
+        $('#wechat').removeClass('active');
+        $('body').css('overflow', '');
+    });
+
+    // Close modal when clicking overlay
+    $('.modal-overlay').on('click', function() {
+        $('#wechat').removeClass('active');
+        $('body').css('overflow', '');
+    });
+
+    // Close modal on ESC key
+    $(document).on('keydown', function(e) {
+        if (e.keyCode === 27) {
+            $('#wechat').removeClass('active');
+            $('body').css('overflow', '');
+        }
+    });
+
+    // Copy to clipboard function
+    window.copyToClipboard = function(text) {
+        navigator.clipboard.writeText(text).then(function() {
+            alert('已复制: ' + text);
+        }).catch(function(err) {
+            // Fallback for older browsers
+            var textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                alert('已复制: ' + text);
+            } catch (err) {
+                alert('复制失败，请手动复制');
+            }
+            document.body.removeChild(textArea);
+        });
+    };
+
+    // Back to top button
+    $(document).ready(function() {
+        var $backToTop = $('.back-to-top');
+
+        // Click to scroll to top
+        $backToTop.on('click', function(e) {
+            e.preventDefault();
+            $('html, body').animate({
+                scrollTop: 0
+            }, 500);
+        });
+    });
+});
+</script>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" title="Back to Top">↑</button>
+
+
+      
+</body>
+</html>
